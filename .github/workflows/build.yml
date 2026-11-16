@@ -12,6 +12,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      KEYSTORE_B64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
     steps:
       - uses: actions/checkout@v4
 
@@ -26,8 +28,6 @@ jobs:
 
       # Optional: a fixed signing key so updates install over the old version.
       - name: Decode signing key
-        env:
-          KEYSTORE_B64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
         if: env.KEYSTORE_B64 != ''
         run: |
           echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
