@@ -15,7 +15,7 @@ An Android app that measures turntable speed. Lay the phone flat on the spinning
 - Calibration: zero the gyro, plus an optional speed correction factor you can set against a strobe disc
 
 ## How to install
-1. Open the **Releases** page of this repo on your phone and download `TurntableRPM.apk`.
+1. On your phone, open https://github.com/godcross/Turntable-RPM-App/releases/latest and download `TurntableRPM.apk`. Every push to `main` publishes a new release automatically.
    (Every push also builds an APK under **Actions → latest run → Artifacts**. That copy comes as a zip and you have to be signed in to GitHub to download it.)
 2. Open the file. Android will ask you to allow installs from your browser or file manager the first time.
 

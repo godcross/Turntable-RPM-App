@@ -48,7 +48,14 @@ jobs:
           path: TurntableRPM.apk
 
       - name: Publish GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('build-{0}', github.run_number) }}
+          name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('Build {0}', github.run_number) }}
+          target_commitish: ${{ github.sha }}
+          make_latest: "true"
+          body: |
+            Install: download TurntableRPM.apk below on your phone and open it.
+            Commit: ${{ github.sha }}
           files: TurntableRPM.apk
